@@ -1,0 +1,12 @@
+$bg_color_header: gold;
+$color_header: white;
+
+#header {
+  display: flex;
+  background-color: $bg_color_header;
+  color: $color_header;
+
+  & * {
+    flex: 1;
+  }
+}
