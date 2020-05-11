@@ -1,12 +1,127 @@
-$bg_color_header: gold;
-$color_header: white;
+$blue: rgb(66, 133, 244);
+$red: rgb(219, 68, 55);
+$yellow: rgb(244, 180, 0);
+$green: rgb(15, 157, 88);
+$gray: darkgray;
+
+$transparent_white: rgba(255, 255, 255, 0.1);
+$transparent_black: rgba(0, 0, 0, 0.1);
+
+$header-height: 40px;
+$sidebar-width: 300px;
+
+$bg_color_body: white;
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $bg_color_body;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  overflow-x: hidden;
+}
 
 #header {
+  $bg_color_header: $blue;
+  $color_header_title: white;
+  $color_header_subtitle: $gray;
+  $color_header_control: $color_header_title;
+  $color_header_control_hover: white;
+  $bg_color_header_control_hover: $transparent_black;
+
   display: flex;
   background-color: $bg_color_header;
-  color: $color_header;
+  color: $color_header_title;
+  align-items: center;
+  padding: 5px 0px;
+  height: $header-height;
+  border-bottom: 2px solid white;
 
-  & * {
+  & #title {
+    display: flex;
+    align-items: baseline;
+    flex: 2;
+    margin: 0px 10vw;
+    font-size: 20pt;
+
+    & > #subtitle {
+      font-size: 12pt;
+      margin-left: 1.5vw;
+      color: $color_header_subtitle;
+    }
+  }
+
+  & #controls {
+    display: flex;
     flex: 1;
+    margin: 0px 5vw;
+
+    & > .control {
+      flex: 1px;
+      margin-right: 2vw;
+      max-width: 100px;
+      min-width: 60px;
+      height: 20px;
+      // border: 1px solid red;
+
+      & > .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 3px;
+        color: $color_header_control;
+        border: 1px solid $color_header_control;
+        width: 100%;
+        height: 100%;
+        user-select: none;
+
+        &:hover {
+          color: $color_header_control_hover;
+          border-color: $color_header_control_hover;
+          background: $bg_color_header_control_hover;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+#body {
+  background-color: $yellow;
+  min-width: 100vw;
+  min-height: 90vh;
+}
+
+#body .sidebar {
+  $bar-margin-left: 2vw;
+
+  position: absolute;
+
+  background-color: $green;
+  color: white;
+  min-width: $sidebar-width;
+
+  &.bar-right {
+    right: 0px;
+  }
+  &.bar-left {
+    left: 0px;
+  }
+
+  & .title {
+    padding: 15px $bar-margin-left;
+    border-bottom: 1px solid white;
+  }
+
+  & .cell-props {
+    $vert-margin: 10px;
+    margin-left: $bar-margin-left;
+
+    & .cell-label {
+      margin-top: $vert-margin;
+    }
+    & .cell-value {
+      margin-left: 1vw;
+      margin-bottom: $vert-margin;
+    }
   }
 }

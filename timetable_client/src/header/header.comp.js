@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Header(props) {
-  const defualtTableName = 'Unnamed Timetable';
+  const defualtTableName = 'Untitled Timetable';
   const defualtUserName = 'Not logged in';
 
   function tableName() {
@@ -16,24 +16,32 @@ function Header(props) {
   }
 
   return (
-    <div id="Header">
+    <div id="header">
       <div id="title">
         {tableName()}
         <div id="subtitle">{userName()}</div>
       </div>
       <div id="controls">
-        <div className="control">Undo</div>
-        <div className="control">Redo</div>
-        <div className="control">Share</div>
-        <div className="control">Export</div>
+        <div className="control">
+          <div className="btn">Undo</div>
+        </div>
+        <div className="control">
+          <div className="btn">Redo</div>
+        </div>
+        <div className="control">
+          <div className="btn">Share</div>
+        </div>
+        <div className="control">
+          <div className="btn">Export</div>
+        </div>
       </div>
     </div>
   );
 }
 
 Header.propTypes = {
-  User: PropTypes.object.isRequired,
-  TimeTableName: PropTypes.object.isRequired,
+  User: PropTypes.object,
+  TimeTableName: PropTypes.object,
 };
 
 export default Header;
