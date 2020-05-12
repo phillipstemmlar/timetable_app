@@ -1,0 +1,210 @@
+$blue: rgb(66, 133, 244);
+$red: rgb(219, 68, 55);
+$yellow: rgb(244, 180, 0);
+$green: rgb(15, 157, 88);
+$gray: darkgray;
+$darkgray: rgb(51, 51, 51);
+
+$transparent_white: rgba(255, 255, 255, 0.1);
+$transparent_black: rgba(0, 0, 0, 0.1);
+
+$header-height: 47px;
+$sidebar-width: 300px;
+
+$bg_color_body: white;
+$bg_color_header: $blue;
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $bg_color_body;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  overflow: hidden;
+}
+
+#header {
+  $color_header_title: white;
+  $color_header_subtitle: $gray;
+  $color_header_control: $color_header_title;
+  $color_header_control_hover: white;
+  $bg_color_header_control_hover: $transparent_black;
+  $padding-vert: 5px;
+
+  display: flex;
+  background-color: $bg_color_header;
+  color: $color_header_title;
+  align-items: center;
+  padding: $padding-vert 0px;
+  height: calc(#{$header-height} - #{$padding-vert}* 2 - 2px);
+  border-bottom: 2px solid white;
+
+  & #title {
+    display: flex;
+    align-items: baseline;
+    flex: 2;
+    margin: 0px 10vw;
+    font-size: 20pt;
+
+    & > #subtitle {
+      font-size: 12pt;
+      margin-left: 1.5vw;
+      color: $color_header_subtitle;
+    }
+  }
+
+  & #controls {
+    display: flex;
+    flex: 1;
+    margin: 0px 5vw;
+
+    & > .control {
+      flex: 1px;
+      margin-right: 2vw;
+      max-width: 100px;
+      min-width: 60px;
+      height: 20px;
+      // border: 1px solid red;
+
+      & > .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 3px;
+        color: $color_header_control;
+        border: 1px solid $color_header_control;
+        width: 100%;
+        height: 100%;
+        user-select: none;
+
+        &:hover {
+          color: $color_header_control_hover;
+          border-color: $color_header_control_hover;
+          background: $bg_color_header_control_hover;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+#body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $bg_color_body;
+  width: calc(100vw - #{$sidebar-width});
+  height: calc(100vh - #{$header-height});
+}
+
+#body .sidebar {
+  $bar-margin-side: 1vw;
+  $bar-background-color: white;
+  $bar-color: black;
+  $bar-title-color: $bar-color;
+  $bar-title-font-size: 18pt;
+
+  $props-margin: 20px;
+  $props-input-bgcolor: rgba(0, 0, 0, 0.05);
+
+  position: absolute;
+
+  background-color: $bar-background-color;
+  color: $bar-color;
+  min-width: $sidebar-width;
+  padding: 0px $bar-margin-side;
+
+  top: $header-height;
+  height: calc(100% - #{$header-height} - 2px);
+
+  &.right {
+    right: 0px;
+    border-left: 1px solid $gray;
+  }
+  &.left {
+    left: 0px;
+    border-right: 1px solid $gray;
+  }
+
+  & .bar-header {
+    padding: 15px $bar-margin-side;
+    border-bottom: 1px solid $gray;
+    & .title {
+      color: $bar-title-color;
+      font-size: $bar-title-font-size;
+    }
+    & .subtitle {
+      color: rgba($bar-title-color, 0.6);
+      font-size: $bar-title-font-size * 0.7;
+    }
+  }
+  & .bar-props {
+    margin: $props-margin $bar-margin-side;
+    & .bar-prop {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: column;
+      margin: $props-margin 0px;
+      & label {
+        color: $bar-color;
+      }
+      & input[type='text'] {
+        height: 20px;
+        border: none;
+        padding-left: 2px;
+        border-radius: 5px;
+        background-color: $props-input-bgcolor;
+        // color: rgba($bar-color, 0.8);
+      }
+
+      & .color-pill {
+        border-radius: 5px;
+        width: 100%;
+        user-select: none;
+        background-color: lightgrey;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+#body .timetable {
+  display: flex;
+
+  background-color: rgba(0, 0, 0, 0.1);
+
+  & .col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+
+    & .col-name {
+      flex: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      padding: 10px;
+    }
+
+    & .col-cells {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+
+      & .cell {
+        padding: 10px;
+        border-top: 1px solid black;
+        user-select: none;
+        cursor: pointer;
+      }
+    }
+  }
+
+  & .col:first-of-type {
+    border-left: 1px solid black;
+  }
+}
